@@ -1,0 +1,82 @@
+/* Styles */
+
+* { margin:0px; padding:0px; }
+
+body {
+	font-family: "Helvetica Neue", Arial, San Serif;
+	color: #88949C;
+	background-color: #263038;
+	font-weight: 300;
+}
+
+h1 { font-size: 42px; line-height: 52px; font-weight: 100; text-align: left; letter-spacing: 1px; }
+	h1 span { color: #FFF; font-weight: 400; }
+	h1 span.highlight { margin-left: 5px; }
+
+	.highlight { color: #6093AB; }
+
+section { width: 940px; margin: 0 auto; }
+	section header { padding: 20px 20px 0 20px; }
+		section header .logo { 0 0; }
+
+	section .main  {
+		position: absolute;
+		height: 180px;
+		top: 50%;
+		margin-top: -90px;
+		padding: 0 20px;
+	}
+
+	section footer {
+		padding: 0 20px 20px;
+		color: #57626A;
+		max-width: 940px;
+		position: absolute;
+		bottom: 0;
+		background-color: #263038;
+	}
+		section footer p {
+			font-size: 14px;
+			line-height: 21px;
+		}
+		section footer a { color: #88949C; text-decoration: none; transition: all 0.3s ease; }
+		section footer a:hover { color: #FFF; }
+
+ul { margin: 20px 0 0; }
+ul li { float: left; list-style: none; }
+	ul li a {
+		padding: 12px 24px;
+		border: 1px solid #57626a;
+		color: #57626a;
+		margin: 0 20px 0 0;
+		border-radius: 4px;
+		text-decoration: none;
+		font-size: 14px;
+		display: inline-block;
+		text-align: center;
+		min-width: 100px;
+		transition: all 0.3s ease;
+	}
+	ul li a:hover {
+		color: #FFF;
+		border-color: #FFF;
+	}
+	ul li a.mainlink { color: #FFF; background-color: #6093AB; border: 1px solid #6093AB; }
+		ul li a.mainlink:hover { background-color: #81aabd; border: 1px solid #81aabd; }
+
+/* Media Queries */
+@media screen and (max-device-width:640px) {
+	section { width: auto; padding: 0; margin: 0; }
+
+	section .main  { height: auto; top: 0; margin-top: 80px; position: relative; margint: auto; }
+		h1 { font-size: 100px; line-height: 150px; font-weight: 200; text-align: left; }
+	section footer { margin-top: 80px; width: 100%; position: relative; margin: 40px 0 0; }
+		section footer p { font-size: 32px; line-height: 48px; }
+
+		ul li { margin: 0 0 20px; float: none; }
+		ul li a { width: 280px; margin: 0; padding: 12px 0;  }
+
+
+
+
+}
