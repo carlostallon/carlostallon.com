@@ -13,11 +13,12 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Deploy via SFTP
-      uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+      uses: appleboy/scp-action@v0.1.7
       with:
-        server: ${{ secrets.FTP_SERVER }}
+        host: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        remote_path: ${{ secrets.FTP_SERVER_DIR }}
-        local_path: './'
-        sftp_only: true
+        port: 22
+        source: "css/,img/,js/,index.html,README.md"
+        target: ${{ secrets.FTP_SERVER_DIR }}
+        strip_components: 0
