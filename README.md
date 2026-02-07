@@ -28,3 +28,4 @@ Automatically deployed to Dreamhost via GitHub Actions on push to `main` branch.
 ## 📄 License
 
 © 2026 Carlos Tallón. All rights reserved.
+
