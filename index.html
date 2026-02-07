@@ -1,45 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-		<meta charset="utf-8"/>
-		<title>Carlos Tallón</title>
-		<link href="css/styles.css" rel="stylesheet">
+<head>
+	<!-- Meta tags esenciales -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="robots" content="index, follow">
+	<meta name="theme-color" content="#FEF42F">
+	
+	<!-- SEO Meta tags -->
+	<title>Carlos Tallón - Product & Brand Designer</title>
+	<meta name="description" content="Carlos Tallón is a designer based in Spain, specialized in the intersection of design, technology, and business.">
+	<meta name="author" content="Carlos Tallón">
+	<meta name="keywords" content="Product Designer, Brand Designer, UX Design, UI Design, Design Leadership, Cabify, Spain">
+	
+	<!-- Canonical URL -->
+	<link rel="canonical" href="https://carlostallon.com/">
+	
+	<!-- Favicon -->
+	<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72 72'><rect width='72' height='72' fill='%23FEF42F'/><path d='M50.3994 50.3999H37.7998V37.7993H50.3994V50.3999ZM50.3994 34.1997H21.5996V21.6001H50.3994V34.1997Z' fill='%23111'/></svg>">
+	
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://carlostallon.com/">
+	<meta property="og:title" content="Carlos Tallón - Product & Brand Designer">
+	<meta property="og:description" content="Designer working at the intersection of design, technology, and business.">
+	<meta property="og:site_name" content="Carlos Tallón">
+	<meta property="og:locale" content="en_US">
+	
+	<!-- Twitter -->
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:url" content="https://carlostallon.com/">
+	<meta name="twitter:title" content="Carlos Tallón - Product & Brand Designer">
+	<meta name="twitter:description" content="Designer working at the intersection of design, technology, and business.">
+	<meta name="twitter:creator" content="@carlostallon">
+	<meta name="twitter:site" content="@carlostallon">
+	
+	<!-- JSON-LD Structured Data -->
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "Person",
+		"name": "Carlos Tallón",
+		"jobTitle": "Product Design Manager",
+		"worksFor": {
+			"@type": "Organization",
+			"name": "RevenueCat"
+		},
+		"url": "https://carlostallon.com",
+		"email": "mail@carlostallon.com",
+		"address": {
+			"@type": "PostalAddress",
+			"addressCountry": "Spain"
+		},
+		"sameAs": [
+			"https://www.linkedin.com/in/carlostallon/",
+			"https://twitter.com/carlostallon",
+			"https://instagram.com/carlostallon",
+			"https://bsky.app/profile/carlostallon.com"
+		]
+	}
+	</script>
+	
+	<!-- Preconnect para optimización de carga -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+	
+	<!-- Preload critical resources -->
+	<link rel="preload" href="css/styles.css" as="style">
+	<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" as="style">
+	
+	<!-- Estilos -->
+	<link href="css/styles.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+	
+	<!-- Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-00ZDKVFSD1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'G-00ZDKVFSD1');
+	</script>
 
-		<script type="text/javascript">
-		  var _gaq = _gaq || [];
-		  _gaq.push(['_setAccount', 'UA-19620165-1']);
-		  _gaq.push(['_trackPageview']);
+	<!-- Carousel Script -->
+	<script src="js/carousel.js" defer></script>
+</head>
 
-		  (function() {
-		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		  })();
-		</script>
-	</head>
+<body>
+	<header class="header" role="banner">
+		<svg class="logo" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Carlos Tallón Logo" role="img">
+			<title>Carlos Tallón Logo</title>
+			<rect width="72" height="72" fill="#FEF42F"/>
+			<path d="M50.3994 50.3999H37.7998V37.7993H50.3994V50.3999ZM50.3994 34.1997H21.5996V21.6001H50.3994V34.1997Z" fill="#111"/>
+		</svg>
+	</header>
 
-	<body>
-		<section>
-			<header>
-				<img class="logo" src="images/imago.png" alt="imagotype" width="24px" height="55px"/>
-			</header>
-
-			<div class="main">
-				<h1>Hi! I'm <span>Carlos Tallón</span>,<br>a passionate Product Designer<span class="highlight">*</span></h1>
-				<ul>
-					<li>
-						<a class="mainlink" href="mailto:mail@carlostallon.com">Contact me</a>
-					</li>
-					<li>
-						<a href="http://twitter.com/carlostallon">Follow me</a>
-					</li>
-				</ul>
+	<main id="main" role="main">
+		<section class="carousel" aria-label="Portfolio Projects" role="region">
+			<h2 class="visually-hidden">Featured Projects</h2>
+			<div class="carousel-container">
+				<img src="img/project1.png"
+					 class="slide active"
+					 srcset="img/project1.png 1x, img/project1@2x.png 2x"
+					 alt="Cabify Product Design - User interface design for ride-hailing app"
+					 loading="eager">
+				<img src="img/project2.png"
+					 class="slide"
+					 srcset="img/project2.png 1x, img/project2@2x.png 2x"
+					 alt="Cabify Brand Design - Brand identity and visual system"
+					 loading="lazy">
+				<img src="img/project3.png"
+					 class="slide"
+					 srcset="img/project3.png 1x, img/project3@2x.png 2x"
+					 alt="Cabify Design Summit Poster - Event promotional design"
+					 loading="lazy">
+				<img src="img/project4.png"
+					 class="slide"
+					 srcset="img/project4.png 1x, img/project4@2x.png 2x"
+					 alt="Tuenti Product Design - Mobile app interface design"
+					 loading="lazy">
+				<img src="img/project5.png"
+					 class="slide"
+					 srcset="img/project5.png 1x, img/project5@2x.png 2x"
+					 alt="CARTO Product Design - Data visualization platform interface"
+					 loading="lazy">
 			</div>
-
-			<footer>
-				<p><span class="highlight">*</span> I am stupidly enthusiastic about design. Since 2004 I have loved creating visual design for the web and seldomly for paper. I'm really obsesed with details. I love getting involved with the architectural structure of information and the user's experience. I'm really passionate with logo design and also love coding with standards. Now, I'm Product Desinger at <a href="http://www.carto.com/">Carto</a>, helping others understand the world we live in, with maps. Formerly worked as Head of Design at <a href="http://www.minijuegos.com/">Minijuegos</a>, the most important online games network for spanish speaking countries and as Product Designer at <a href="http://www.tuenti.com/">Tuenti</a>, the largest social network in Spain.</p>
-			</footer>
+			<div class="carousel-indicators" role="tablist" aria-label="Project navigation">
+				<button class="indicator active" role="tab" aria-label="View project 1" aria-selected="true"></button>
+				<button class="indicator" role="tab" aria-label="View project 2" aria-selected="false"></button>
+				<button class="indicator" role="tab" aria-label="View project 3" aria-selected="false"></button>
+				<button class="indicator" role="tab" aria-label="View project 4" aria-selected="false"></button>
+				<button class="indicator" role="tab" aria-label="View project 5" aria-selected="false"></button>
+			</div>
 		</section>
-	</body>
+
+		<section class="content" role="region" aria-labelledby="intro-heading">
+			<h1 id="intro-heading">Hello, I’m <span class="highlight">Carlos Tallón</span>, a designer based in Spain. Since 2008, I’ve specialized in shaping products and brands for high-growth startups.</h1>
+			<p>Today, I'm Product Design Manager at RevenueCat, driving work at the intersection of design & technology.</p>
+		</section>
+	</main>
+
+	<footer class="footer" role="contentinfo">
+		<nav class="footer-nav" role="navigation" aria-label="Social Links and Contact">
+			<a href="https://carlostallon.notion.site/Carlos-Tall-n-819424da76e440fe8145b98e1ea5784c" 
+			   target="_blank" 
+			   rel="noopener noreferrer"
+			   aria-label="View Carlos Tallón's CV (opens in new tab)">CV</a>
+			<a href="mailto:mail@carlostallon.com" 
+			   aria-label="Send email to Carlos Tallón">Contact me</a>
+			<a href="https://www.linkedin.com/in/carlostallon/" 
+			   target="_blank" 
+			   rel="noopener noreferrer"
+			   aria-label="Follow Carlos Tallón on LinkedIn (opens in new tab)">LinkedIn</a>
+			<a href="https://twitter.com/carlostallon" 
+			   target="_blank" 
+			   rel="noopener noreferrer"
+			   aria-label="Follow Carlos Tallón on Twitter (opens in new tab)">Twitter</a>
+			<a href="https://bsky.app/profile/carlostallon.com" 
+			   target="_blank" 
+			   rel="noopener noreferrer"
+			   aria-label="Follow Carlos Tallón on Bluesky (opens in new tab)">Bluesky</a>
+			<a href="https://instagram.com/carlostallon" 
+			   target="_blank" 
+			   rel="noopener noreferrer"
+			   aria-label="Follow Carlos Tallón on Instagram (opens in new tab)">Instagram</a>
+		</nav>
+	</footer>
+</body>
 </html>
