@@ -2,6 +2,8 @@
 
 Personal portfolio website showcasing design work at the intersection of design, technology, and business.
 
+🚀 **Auto-deployed via GitHub Actions**
+
 ## 🎨 Features
 
 - Clean, minimalist design
