@@ -2,9 +2,7 @@
 
 Personal portfolio website showcasing design work at the intersection of design, technology, and business.
 
-🚀 **Auto-deployed via GitHub Actions**
-
-## 🎨 Features
+## Features
 
 - Clean, minimalist design
 - Interactive portfolio carousel
@@ -14,16 +12,17 @@ Personal portfolio website showcasing design work at the intersection of design,
 - Performance optimized (lazy loading, preload)
 - Motion sensitivity support
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - Vanilla HTML/CSS/JavaScript
 - No frameworks or dependencies
 - Inter font family
 - CSS variables for theming
 
-## 🚀 Deployment
+## Deployment
 
 Automatically deployed to Dreamhost via GitHub Actions on push to `master` branch.
+Test 1
 
 ## 📄 License
 
