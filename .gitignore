@@ -1,0 +1,13 @@
+# Editor
+.nova/
+.vscode/
+.DS_Store
+
+# System files
+Thumbs.db
+*.log
+
+# Temporary files
+*.tmp
+*.swp
+*~
