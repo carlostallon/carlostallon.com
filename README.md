@@ -23,7 +23,7 @@ Personal portfolio website showcasing design work at the intersection of design,
 
 ## 🚀 Deployment
 
-Automatically deployed to Dreamhost via GitHub Actions on push to `main` branch.
+Automatically deployed to Dreamhost via GitHub Actions on push to `master` branch.
 
 ## 📄 License
 
