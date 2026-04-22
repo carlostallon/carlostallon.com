@@ -114,7 +114,7 @@ function renderCalendar() {
 
 function buildDayCard(date, isOutsideMonth) {
   const card = document.createElement("article");
-  const routine = getRoutineForDate(date);
+  const routine = getDisplayRoutineForDate(date);
   const isToday = isSameDate(date, today);
   const isWeekend = !routine;
   const isSelected = routine ? selectedRoutines.has(routine.key) : false;
@@ -157,6 +157,17 @@ function buildMeta(date, routine) {
   }
 
   return capitalize(weekdayLabel);
+}
+
+function getDisplayRoutineForDate(date) {
+  if (getWeekdayIndex(date) === 5) {
+    return {
+      key: "sabado-hyrox",
+      label: "Fuerza en parejas + Hyrox"
+    };
+  }
+
+  return getRoutineForDate(date);
 }
 
 function getRoutineForDate(date) {
