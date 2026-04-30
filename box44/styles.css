@@ -266,7 +266,6 @@ select {
   border-radius: calc(var(--radius) * 1.5);
   background: color-mix(in srgb, var(--muted) 34%, white);
   padding: 18px;
-  overflow-x: auto;
 }
 
 .weekday-row {
@@ -309,8 +308,7 @@ select {
 }
 
 .day-card.is-outside-month .day-number,
-.day-card.is-outside-month .routine-name,
-.day-card.is-outside-month .routine-meta {
+.day-card.is-outside-month .routine-name {
   opacity: 0.66;
 }
 
@@ -349,11 +347,8 @@ select {
   letter-spacing: -0.02em;
 }
 
-.routine-meta {
-  margin: 0;
-  color: var(--muted-foreground);
-  font-size: 0.875rem;
-  line-height: 1.45;
+.routine-name-short {
+  display: none;
 }
 
 @media (max-width: 860px) {
@@ -373,18 +368,15 @@ select {
     padding: 20px;
   }
 
-  .weekday-row,
-  .calendar-grid {
-    min-width: 680px;
-  }
-
   .weekday-row {
-    gap: 8px;
-    font-size: 0.72rem;
+    gap: 4px;
+    padding: 0;
+    font-size: 0.62rem;
+    letter-spacing: 0.02em;
   }
 
   .calendar-grid {
-    gap: 8px;
+    gap: 4px;
   }
 
   .month-selector {
@@ -403,25 +395,31 @@ select {
   }
 
   .month-frame {
-    padding: 14px;
+    padding: 10px;
   }
 
   .day-card {
-    min-height: 112px;
-    padding: 10px;
-    gap: 8px;
+    min-height: 84px;
+    padding: 6px;
+    gap: 4px;
+    border-radius: calc(var(--radius) + 1px);
   }
 
   .day-number {
-    font-size: 1rem;
+    font-size: 0.78rem;
   }
 
   .routine-name {
-    font-size: 0.82rem;
+    font-size: 0.58rem;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
   }
 
-  .routine-meta {
-    font-size: 0.72rem;
-    line-height: 1.3;
+  .routine-name-full {
+    display: none;
+  }
+
+  .routine-name-short {
+    display: inline;
   }
 }

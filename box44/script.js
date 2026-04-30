@@ -1,10 +1,16 @@
 const ROUTINES = [
-  { key: "gymnasticos", label: "Gymnasticos" },
-  { key: "fuerza-parejas", label: "Fuerza en parejas" },
-  { key: "halterofilia", label: "Halterofilia" },
-  { key: "deka", label: "Deka" },
-  { key: "fuerza", label: "Fuerza" }
+  { key: "gymnasticos", label: "Gymnasticos", shortLabel: "GYM" },
+  { key: "fuerza-parejas", label: "Fuerza en parejas", shortLabel: "FPAR" },
+  { key: "halterofilia", label: "Halterofilia", shortLabel: "HAL" },
+  { key: "deka", label: "Deka", shortLabel: "DEKA" },
+  { key: "fuerza", label: "Fuerza", shortLabel: "FUE" }
 ];
+
+const SATURDAY_ROUTINE = {
+  key: "sabado-hyrox",
+  label: "Fuerza en parejas + Hyrox",
+  shortLabel: "FPAR+HY"
+};
 
 const MS_PER_DAY = 24 * 60 * 60 * 1000;
 const STORAGE_KEY = "box44-selected-routines";
@@ -139,32 +145,19 @@ function buildDayCard(date, isOutsideMonth) {
       <span class="day-number">${date.getDate()}</span>
     </div>
     <div>
-      <p class="routine-name">${routine ? routine.label : "Descanso"}</p>
-      <p class="routine-meta">${buildMeta(date, routine)}</p>
+      <p class="routine-name">
+        <span class="routine-name-full">${routine ? routine.label : "Descanso"}</span>
+        <span class="routine-name-short">${routine ? routine.shortLabel : "OFF"}</span>
+      </p>
     </div>
   `;
 
   return card;
 }
 
-function buildMeta(date, routine) {
-  const weekdayLabel = new Intl.DateTimeFormat("es-ES", {
-    weekday: "long"
-  }).format(date);
-
-  if (!routine) {
-    return `${capitalize(weekdayLabel)} · descanso`;
-  }
-
-  return capitalize(weekdayLabel);
-}
-
 function getDisplayRoutineForDate(date) {
   if (getWeekdayIndex(date) === 5) {
-    return {
-      key: "sabado-hyrox",
-      label: "Fuerza en parejas + Hyrox"
-    };
+    return SATURDAY_ROUTINE;
   }
 
   return getRoutineForDate(date);
