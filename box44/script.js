@@ -1,9 +1,9 @@
 const ROUTINES = [
-  { key: "gymnasticos", label: "Gymnasticos", shortLabel: "GYM" },
-  { key: "fuerza-parejas", label: "Fuerza en parejas", shortLabel: "FPAR" },
   { key: "halterofilia", label: "Halterofilia", shortLabel: "HAL" },
-  { key: "deka", label: "Deka", shortLabel: "DEKA" },
-  { key: "fuerza", label: "Fuerza", shortLabel: "FUE" }
+  { key: "hyrox", label: "Hyrox", shortLabel: "HYR" },
+  { key: "fuerza", label: "Fuerza", shortLabel: "FUE" },
+  { key: "gymnasticos", label: "Gymnasticos", shortLabel: "GYM" },
+  { key: "fuerza-parejas", label: "Fuerza en parejas", shortLabel: "FPAR" }
 ];
 
 const SATURDAY_ROUTINE = {
@@ -25,7 +25,7 @@ const nextMonthButton = document.querySelector("#next-month");
 
 const today = new Date();
 let visibleMonthDate = new Date(today.getFullYear(), today.getMonth(), 1);
-const currentWeekMonday = startOfWeek(today);
+const REFERENCE_WEEK_MONDAY = new Date(2026, 4, 11);
 
 render();
 
@@ -177,7 +177,7 @@ function getRoutineForDate(date) {
 
 function getWeekOffset(date) {
   const weekMonday = startOfWeek(date);
-  return Math.round((weekMonday - currentWeekMonday) / (MS_PER_DAY * 7));
+  return Math.round((weekMonday - REFERENCE_WEEK_MONDAY) / (MS_PER_DAY * 7));
 }
 
 function getWeekdayIndex(date) {
