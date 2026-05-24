@@ -20,6 +20,7 @@ jobs:
       run: |
         sshpass -p "${{ secrets.SFTP_PASSWORD }}" sftp -o StrictHostKeyChecking=no -P ${{ secrets.SFTP_PORT }} ${{ secrets.SFTP_USERNAME }}@${{ secrets.SFTP_HOST }} <<EOF
         cd ${{ secrets.SFTP_PATH }}
+        put -r box44
         put -r css
         put -r img
         put -r js
