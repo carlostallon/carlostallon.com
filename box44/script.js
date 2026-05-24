@@ -19,13 +19,14 @@ const selectedRoutines = new Set(loadStoredSelection());
 const filtersRoot = document.querySelector("#routine-filters");
 const calendarGrid = document.querySelector("#calendar-grid");
 const clearSelectionButton = document.querySelector("#clear-selection");
-const visibleMonthLabel = document.querySelector("#visible-month-label");
-const previousMonthButton = document.querySelector("#previous-month");
-const nextMonthButton = document.querySelector("#next-month");
+const visibleWeekLabel = document.querySelector("#visible-week-label");
+const previousWeekButton = document.querySelector("#previous-week");
+const nextWeekButton = document.querySelector("#next-week");
 
 const today = new Date();
-let visibleMonthDate = new Date(today.getFullYear(), today.getMonth(), 1);
+let visibleWeekStart = getInitialWeekStart(today);
 const REFERENCE_WEEK_MONDAY = new Date(2026, 4, 11);
+REFERENCE_WEEK_MONDAY.setHours(0, 0, 0, 0);
 
 render();
 
@@ -35,21 +36,13 @@ clearSelectionButton.addEventListener("click", () => {
   render();
 });
 
-previousMonthButton.addEventListener("click", () => {
-  visibleMonthDate = new Date(
-    visibleMonthDate.getFullYear(),
-    visibleMonthDate.getMonth() - 1,
-    1
-  );
+previousWeekButton.addEventListener("click", () => {
+  visibleWeekStart = addDays(visibleWeekStart, -7);
   render();
 });
 
-nextMonthButton.addEventListener("click", () => {
-  visibleMonthDate = new Date(
-    visibleMonthDate.getFullYear(),
-    visibleMonthDate.getMonth() + 1,
-    1
-  );
+nextWeekButton.addEventListener("click", () => {
+  visibleWeekStart = addDays(visibleWeekStart, 7);
   render();
 });
 
@@ -87,38 +80,15 @@ function renderFilters() {
 
 function renderCalendar() {
   calendarGrid.innerHTML = "";
+  visibleWeekLabel.textContent = formatWeekLabel(visibleWeekStart);
 
-  const monthLabel = new Intl.DateTimeFormat("es-ES", {
-    month: "long",
-    year: "numeric"
-  }).format(visibleMonthDate);
-
-  visibleMonthLabel.textContent = capitalize(monthLabel);
-
-  const visibleYear = visibleMonthDate.getFullYear();
-  const visibleMonth = visibleMonthDate.getMonth();
-  const firstDayOfMonth = new Date(visibleYear, visibleMonth, 1);
-  const lastDayOfMonth = new Date(visibleYear, visibleMonth + 1, 0);
-  const leadingPadding = (firstDayOfMonth.getDay() + 6) % 7;
-  const trailingPadding = (7 - ((leadingPadding + lastDayOfMonth.getDate()) % 7)) % 7;
-
-  for (let index = 0; index < leadingPadding; index += 1) {
-    const date = new Date(visibleYear, visibleMonth, index - leadingPadding + 1);
-    calendarGrid.appendChild(buildDayCard(date, true));
-  }
-
-  for (let day = 1; day <= lastDayOfMonth.getDate(); day += 1) {
-    const date = new Date(visibleYear, visibleMonth, day);
-    calendarGrid.appendChild(buildDayCard(date, false));
-  }
-
-  for (let index = 1; index <= trailingPadding; index += 1) {
-    const date = new Date(visibleYear, visibleMonth + 1, index);
-    calendarGrid.appendChild(buildDayCard(date, true));
+  for (let offset = 0; offset < 7; offset += 1) {
+    const date = addDays(visibleWeekStart, offset);
+    calendarGrid.appendChild(buildDayCard(date));
   }
 }
 
-function buildDayCard(date, isOutsideMonth) {
+function buildDayCard(date) {
   const card = document.createElement("article");
   const routine = getDisplayRoutineForDate(date);
   const isToday = isSameDate(date, today);
@@ -126,9 +96,6 @@ function buildDayCard(date, isOutsideMonth) {
   const isSelected = routine ? selectedRoutines.has(routine.key) : false;
   const classes = ["day-card"];
 
-  if (isOutsideMonth) {
-    classes.push("is-outside-month");
-  }
   if (isWeekend) {
     classes.push("is-weekend");
   }
@@ -180,6 +147,16 @@ function getWeekOffset(date) {
   return Math.round((weekMonday - REFERENCE_WEEK_MONDAY) / (MS_PER_DAY * 7));
 }
 
+function getInitialWeekStart(date) {
+  const normalized = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+  if (getWeekdayIndex(normalized) === 6) {
+    normalized.setDate(normalized.getDate() + 1);
+  }
+
+  return startOfWeek(normalized);
+}
+
 function getWeekdayIndex(date) {
   return (date.getDay() + 6) % 7;
 }
@@ -190,6 +167,33 @@ function startOfWeek(date) {
   copy.setDate(copy.getDate() - weekdayIndex);
   copy.setHours(0, 0, 0, 0);
   return copy;
+}
+
+function addDays(date, days) {
+  const copy = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  copy.setDate(copy.getDate() + days);
+  copy.setHours(0, 0, 0, 0);
+  return copy;
+}
+
+function formatWeekLabel(weekStart) {
+  const weekEnd = addDays(weekStart, 6);
+  const sameMonth = weekStart.getMonth() === weekEnd.getMonth();
+  const sameYear = weekStart.getFullYear() === weekEnd.getFullYear();
+
+  const startText = new Intl.DateTimeFormat("es-ES", {
+    day: "numeric",
+    month: "short"
+  }).format(weekStart);
+
+  const endText = new Intl.DateTimeFormat("es-ES", {
+    day: "numeric",
+    month: sameMonth ? undefined : "short",
+    year: sameYear ? undefined : "numeric"
+  }).format(weekEnd);
+
+  const yearText = sameYear ? weekStart.getFullYear() : weekEnd.getFullYear();
+  return `${capitalize(startText)} - ${capitalize(endText)} ${yearText}`;
 }
 
 function isSameDate(left, right) {

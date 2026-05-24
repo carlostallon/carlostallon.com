@@ -7,32 +7,20 @@
     <title>Box44 Training Calendar</title>
     <meta
       name="description"
-      content="Calendario mensual de rutinas Box44 con rotación semanal y selección de entrenos."
+      content="Calendario semanal de rutinas Box44 con rotación y selección de entrenos."
     />
     <link rel="canonical" href="https://carlostallon.com/box44/" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <main class="app-shell">
-      <header class="page-header">
-        <a class="back-link" href="/">carlostallon.com</a>
-        <div>
-          <p class="kicker">Box44</p>
-          <h1>Training Calendar</h1>
-          <p class="intro-copy">
-            Selecciona los entrenos a los que quieres ir y revisa en qué días
-            caen durante cada mes según la rotación semanal.
-          </p>
-        </div>
-      </header>
-
       <section class="controls surface-card" aria-labelledby="filters-title">
         <div class="controls-header">
           <div>
             <h2 id="filters-title">Rutinas</h2>
             <p class="section-copy">
               Activa las clases a las que quieres ir para ver rápidamente qué
-              días te tocan durante el mes.
+              días te tocan esta semana.
             </p>
           </div>
           <button id="clear-selection" class="ghost-button" type="button">
@@ -46,22 +34,22 @@
       <section class="calendar-panel surface-card" aria-labelledby="calendar-title">
         <div class="calendar-header">
           <div>
-            <h2 id="calendar-title">Calendario mensual</h2>
+            <h2 id="calendar-title">Calendario semanal</h2>
             <p class="section-copy">
-              Cada tarjeta muestra la rutina del día. Los fines de semana se
-              marcan como descanso.
+              La vista muestra una semana completa de lunes a domingo. Si hoy es
+              domingo, se abre directamente la siguiente semana.
             </p>
           </div>
 
           <div class="calendar-toolbar">
-            <div class="month-selector" aria-label="Selector de mes">
-              <button id="previous-month" class="ghost-button month-nav-button" type="button">
+            <div class="month-selector" aria-label="Selector de semana">
+              <button id="previous-week" class="ghost-button month-nav-button" type="button">
                 Anterior
               </button>
-              <div id="visible-month-label" class="month-label" aria-live="polite">
-                Mes actual
+              <div id="visible-week-label" class="month-label" aria-live="polite">
+                Semana actual
               </div>
-              <button id="next-month" class="ghost-button month-nav-button" type="button">
+              <button id="next-week" class="ghost-button month-nav-button" type="button">
                 Siguiente
               </button>
             </div>
