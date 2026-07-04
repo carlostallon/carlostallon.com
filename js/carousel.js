@@ -15,6 +15,7 @@
 
   let currentSlide = 0;
   let autoplayInterval = null;
+  let autoplayRestartTimeout = null;
   let isAutoplayPaused = false;
 
   // Función para mostrar un slide específico
@@ -67,13 +68,23 @@
     }
   }
 
+  function scheduleAutoplayRestart(delay) {
+    if (autoplayRestartTimeout) {
+      clearTimeout(autoplayRestartTimeout);
+    }
+
+    autoplayRestartTimeout = setTimeout(function() {
+      autoplayRestartTimeout = null;
+      startAutoplay();
+    }, delay);
+  }
+
   // Event listeners para indicadores
   indicators.forEach((indicator, index) => {
     indicator.addEventListener('click', () => {
       showSlide(index);
       stopAutoplay();
-      // Reinicia autoplay después de interacción
-      setTimeout(startAutoplay, 3000);
+      scheduleAutoplayRestart(3000);
     });
   });
 
@@ -81,8 +92,7 @@
   carouselContainer.addEventListener('click', () => {
     nextSlide();
     stopAutoplay();
-    // Reinicia autoplay después de interacción
-    setTimeout(startAutoplay, 3000);
+    scheduleAutoplayRestart(3000);
   });
 
   // Pausa autoplay en hover
@@ -108,7 +118,7 @@
       }
 
       stopAutoplay();
-      setTimeout(startAutoplay, 3000);
+      scheduleAutoplayRestart(3000);
     }
   });
 

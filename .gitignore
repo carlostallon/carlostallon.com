@@ -11,3 +11,6 @@ Thumbs.db
 *.tmp
 *.swp
 *~
+
+# Work in progress (local only)
+cargadores/
