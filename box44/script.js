@@ -1,10 +1,13 @@
 const ROUTINES = [
-  { key: "halterofilia", label: "Halterofilia", shortLabel: "HAL" },
   { key: "hyrox", label: "Hyrox", shortLabel: "HYR" },
   { key: "fuerza", label: "Fuerza", shortLabel: "FUE" },
   { key: "gymnasticos", label: "Gymnasticos", shortLabel: "GYM" },
-  { key: "fuerza-parejas", label: "Fuerza en parejas", shortLabel: "FPAR" }
+  { key: "fuerza-parejas", label: "Fuerza en parejas", shortLabel: "FPAR" },
+  { key: "halterofilia", label: "Halterofilia", shortLabel: "HAL" }
 ];
+
+const DEKA_ROUTINE = { key: "deka", label: "DEKA", shortLabel: "DEKA" };
+const FILTER_ROUTINES = [...ROUTINES, DEKA_ROUTINE];
 
 const SATURDAY_ROUTINE = {
   key: "sabado-hyrox",
@@ -25,7 +28,7 @@ const nextWeekButton = document.querySelector("#next-week");
 
 const today = new Date();
 let visibleWeekStart = getInitialWeekStart(today);
-const REFERENCE_WEEK_MONDAY = new Date(2026, 4, 11);
+const REFERENCE_WEEK_MONDAY = new Date(2026, 7, 24);
 REFERENCE_WEEK_MONDAY.setHours(0, 0, 0, 0);
 
 render();
@@ -54,7 +57,7 @@ function render() {
 function renderFilters() {
   filtersRoot.innerHTML = "";
 
-  ROUTINES.forEach((routine, index) => {
+  FILTER_ROUTINES.forEach((routine, index) => {
     const isActive = selectedRoutines.has(routine.key);
     const card = document.createElement("button");
     card.type = "button";
@@ -139,7 +142,13 @@ function getRoutineForDate(date) {
 
   const weekOffset = getWeekOffset(date);
   const routineIndex = mod(weekdayIndex - weekOffset, ROUTINES.length);
-  return ROUTINES[routineIndex];
+  const routine = ROUTINES[routineIndex];
+
+  if (routine.key === "hyrox" && mod(weekOffset, 2) !== 0) {
+    return DEKA_ROUTINE;
+  }
+
+  return routine;
 }
 
 function getWeekOffset(date) {
